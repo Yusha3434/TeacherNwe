@@ -1,4 +1,11 @@
 const { Telegraf, Markup } = require('telegraf');
+const http = require('http');
+
+// Render Port Error ကို ဖြေရှင်းရန် အောက်ပါ code ကို ထည့်ထားပါသည်
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Bot is running\n');
+}).listen(process.env.PORT || 3000);
 
 const bot = new Telegraf('8546255100:AAFzI17mWp5jxG5bkgX59qYWEx65-ThiSmA');
 
@@ -65,4 +72,4 @@ bot.action('back_to_start', (ctx) => {
 });
 
 bot.launch();
-console.log("Bot is running with Updated Payment Info and Premium Emojis...");
+console.log("Bot is running with Port listener for Render...");
