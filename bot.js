@@ -61,7 +61,7 @@ bot.action('package', async (ctx) => {
     await ctx.reply(PACKAGE_TEXT, { 
         parse_mode: 'HTML',
         ...Markup.inlineKeyboard([
-            [Markup.button.url("Package Channel ကြည့်ရန်", 'https://t.me/nwe_poe_eain_package')],
+            [Markup.button.url("Package Channel ကြည့်ရန်", 'https://t.me/nwe_poe_eain_package/12?single')],
             [Markup.button.callback("အရှေ့သို့ပြန်သွားရန်", 'back_to_start')]
         ])
     });
