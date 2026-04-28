@@ -13,7 +13,7 @@ const PACKAGE_TEXT = `<tg-emoji emoji-id="5220072555427143794">🔥</tg-emoji> <
 
 const QUESTION_TEXT = `<tg-emoji emoji-id="6100348608370970847">💗</tg-emoji> <b>Question Price များ</b>\n\n1 Question - 3000 ks\n3 Question - 6000ks\n5 Question - 10000ks\n\nTikTok မှလာသူများအတွက် အောက်က Button ကိုနှိပ်ပါ။`;
 
-const PAYMENT_TEXT = `💳 <b>လက်ခံသော Payment များ</b>\n\n<tg-emoji emoji-id="6073210342509383617">🔸</tg-emoji> Kpay - 09761361219 (Nwe Poe Eain)\n<tg-emoji emoji-id="6073210342509383617">🔸</tg-emoji> Wave - 09761361219 (Nwe Poe Eain)\n\n<tg-emoji emoji-id="6199733850952700358">📩</tg-emoji> ငွေလွှဲပြီးလျှင် Screenshot ပို့ပေးပါရန်။`;
+const PAYMENT_TEXT = `<tg-emoji emoji-id="6237668552594167846">💳</tg-emoji> <b>ငွေလွှဲရန်နံပါတ်များ</b>\n\n09754658360 [Kpay]\nDaw Aye ThanDar \n\n09652182267 [Wave]\nTHK\n\n‼️ <b>Note ကို Payment လို့ရေးပေးပါနော်</b>\n‼️ <b>Tarot လို့မရေးပါနဲ့နော် ရေးရင်အဆုံးပါ</b>\n\n#ဆရာမလေးပိုး \n#နွယ်ပိုးအိမ် ။`;
 
 // --- Keyboards ---
 const mainMenu = Markup.inlineKeyboard([
@@ -34,7 +34,7 @@ bot.action('main_menu', (ctx) => {
 });
 
 bot.action('rule', (ctx) => {
-    ctx.editMessageCaption(RULE_TEXT, { parse_mode: 'HTML', reply_markup: Markup.inlineKeyboard([[Markup.button.callback("အရှေ့သို့ပြန်သွားရန်", 'main_menu')]]).reply_markup });
+    ctx.editMessageCaption(RULE_TEXT, { parse_mode: 'HTML', reply_markup: Markup.inlineKeyboard([[Markup.button.callback("အရှေ့သို့ပြန်သွားရန်", 'main_menu')]]).reply_markup }).catch(() => {});
 });
 
 bot.action('question', (ctx) => {
@@ -42,16 +42,15 @@ bot.action('question', (ctx) => {
         [Markup.button.url("TikTok မှ လာသူများအတွက်", 'https://t.me/nwe_poe_eain_package/35')],
         [Markup.button.callback("အရှေ့သို့ပြန်သွားရန်", 'main_menu')]
     ]);
-    ctx.editMessageCaption(QUESTION_TEXT, { parse_mode: 'HTML', ...qMenu });
+    ctx.editMessageCaption(QUESTION_TEXT, { parse_mode: 'HTML', ...qMenu }).catch(() => {});
 });
 
 bot.action('payment', (ctx) => {
-    ctx.editMessageCaption(PAYMENT_TEXT, { parse_mode: 'HTML', reply_markup: Markup.inlineKeyboard([[Markup.button.callback("အရှေ့သို့ပြန်သွားရန်", 'main_menu')]]).reply_markup });
+    ctx.editMessageCaption(PAYMENT_TEXT, { parse_mode: 'HTML', reply_markup: Markup.inlineKeyboard([[Markup.button.callback("အရှေ့သို့ပြန်သွားရန်", 'main_menu')]]).reply_markup }).catch(() => {});
 });
 
 bot.action('package', async (ctx) => {
     await ctx.answerCbQuery();
-    // ပုံ ၉ ပုံ မပို့တော့ဘဲ စာသားပဲ ပို့မယ်
     await ctx.reply(PACKAGE_TEXT, { 
         parse_mode: 'HTML',
         ...Markup.inlineKeyboard([
@@ -66,4 +65,4 @@ bot.action('back_to_start', (ctx) => {
 });
 
 bot.launch();
-console.log("Bot is running perfectly with Premium Emojis...");
+console.log("Bot is running with Updated Payment Info and Premium Emojis...");
